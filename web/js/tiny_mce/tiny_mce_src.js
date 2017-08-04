@@ -5225,7 +5225,7 @@ tinymce.html.Writer = function(settings) {
 		};
 
 		function _traverse(how) {
-			var c, endContainerDepth = 0, startContainerDepth = 0, p, depthDiff, startNode, endNode, sp, ep;
+			var c, endContainerKPh = 0, startContainerKPh = 0, p, kphDiff, startNode, endNode, sp, ep;
 
 			if (t[START_CONTAINER] == t[END_CONTAINER])
 				return _traverseSameContainer(how);
@@ -5234,28 +5234,28 @@ tinymce.html.Writer = function(settings) {
 				if (p == t[START_CONTAINER])
 					return _traverseCommonStartContainer(c, how);
 
-				++endContainerDepth;
+				++endContainerKPh;
 			}
 
 			for (c = t[START_CONTAINER], p = c.parentNode; p; c = p, p = p.parentNode) {
 				if (p == t[END_CONTAINER])
 					return _traverseCommonEndContainer(c, how);
 
-				++startContainerDepth;
+				++startContainerKPh;
 			}
 
-			depthDiff = startContainerDepth - endContainerDepth;
+			kphDiff = startContainerKPh - endContainerKPh;
 
 			startNode = t[START_CONTAINER];
-			while (depthDiff > 0) {
+			while (kphDiff > 0) {
 				startNode = startNode.parentNode;
-				depthDiff--;
+				kphDiff--;
 			}
 
 			endNode = t[END_CONTAINER];
-			while (depthDiff < 0) {
+			while (kphDiff < 0) {
 				endNode = endNode.parentNode;
-				depthDiff++;
+				kphDiff++;
 			}
 
 			// ascend the ancestor hierarchy until we have a common parent.
@@ -13464,7 +13464,7 @@ tinymce.create('tinymce.ui.Toolbar:tinymce.ui.Container', {
 				}
 			},
 
-			mceSelectNodeDepth : function(command, ui, value) {
+			mceSelectNodeKPh : function(command, ui, value) {
 				var counter = 0;
 
 				dom.getParent(selection.getNode(), function(node) {

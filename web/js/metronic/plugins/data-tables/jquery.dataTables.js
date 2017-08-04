@@ -379,27 +379,27 @@
 		
 		
 		/**
-		 * Take the column definitions and static columns arrays and calculate how
+		 * Take the column contents and static columns arrays and calculate how
 		 * they relate to column indexes. The callback function will then apply the
-		 * definition found for a column to a suitable configuration object.
+		 * content found for a column to a suitable configuration object.
 		 *  @param {object} oSettings dataTables settings object
 		 *  @param {array} aoColDefs The aoColumnDefs array that is to be applied
 		 *  @param {array} aoCols The aoColumns array that defines columns individually
 		 *  @param {function} fn Callback function - takes two parameters, the calculated
-		 *    column index and the definition for that column.
+		 *    column index and the content for that column.
 		 *  @memberof DataTable#oApi
 		 */
 		function _fnApplyColumnDefs( oSettings, aoColDefs, aoCols, fn )
 		{
 			var i, iLen, j, jLen, k, kLen;
 		
-			// Column definitions with aTargets
+			// Column contents with aTargets
 			if ( aoColDefs )
 			{
-				/* Loop over the definitions array - loop in reverse so first instance has priority */
+				/* Loop over the contents array - loop in reverse so first instance has priority */
 				for ( i=aoColDefs.length-1 ; i>=0 ; i-- )
 				{
-					/* Each definition can target multiple columns, as it is an array */
+					/* Each content can target multiple columns, as it is an array */
 					var aTargets = aoColDefs[i].aTargets;
 					if ( !$.isArray( aTargets ) )
 					{
@@ -6572,10 +6572,10 @@
 				bUsePassedData = true;
 			}
 			
-			/* Language definitions */
+			/* Language contents */
 			if ( oInit.oLanguage.sUrl !== "" )
 			{
-				/* Get the language definitions from a file - because this Ajax call makes the language
+				/* Get the language contents from a file - because this Ajax call makes the language
 				 * get async to the remainder of this function we use bInitHandedOff to indicate that 
 				 * _fnInitialise will be fired by the returned Ajax handler, rather than the constructor
 				 */
@@ -6671,7 +6671,7 @@
 				_fnAddColumn( oSettings, anThs ? anThs[i] : null );
 			}
 			
-			/* Apply the column definitions */
+			/* Apply the column contents */
 			_fnApplyColumnDefs( oSettings, oInit.aoColumnDefs, aoColumnsInit, function (iCol, oDef) {
 				_fnColumnOptions( oSettings, iCol, oDef );
 			} );
@@ -8205,7 +8205,7 @@
 		/**
 		 * Enable or disable the display of a 'processing' indicator when the table is
 		 * being processed (e.g. a sort). This is particularly useful for tables with
-		 * large amounts of data where it can take a noticeable amount of time to sort
+		 * large amounts of data where it can take a labelable amount of time to sort
 		 * the entries.
 		 *  @type boolean
 		 *  @default false

@@ -511,7 +511,7 @@
 			else
 				$(document).unbind(events, handler);
 
-		// former impl...
+		// former provider...
 		//		var $e = $('a,:input');
 		//		b ? $e.bind(events, opts, handler) : $e.unbind(events, handler);
 		}

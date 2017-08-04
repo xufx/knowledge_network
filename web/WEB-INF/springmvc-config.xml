@@ -12,7 +12,7 @@
        http://www.springframework.org/schema/context/spring-context-4.3.xsd
 ">
     <!--自动扫描该包，springmvc会将带有@Controller注解的类注册为spring的controller-->
-<context:component-scan base-package="org.fkit.hrm.controller"/>
+<context:component-scan base-package="cn.xufx.kn.controller"/>
 
     <mvc:annotation-driven/><!--设置默认配置方案-->
 
@@ -23,7 +23,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/*"/><!--拦截所有请求-->
             <!--自定义判断用户权限的拦截类-->
-            <bean class="org.fkit.hrm.interceptor.AuthorizedInterceptor"/>
+            <bean class="cn.xufx.kn.interceptor.AuthorizedInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

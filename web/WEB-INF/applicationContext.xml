@@ -19,9 +19,9 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 ">
-    <mybatis:scan base-package="org.fkit.hrm.dao"/>
+    <mybatis:scan base-package="cn.xufx.kn.dao"/>
 
-    <context:component-scan base-package="org.fkit.hrm"/>
+    <context:component-scan base-package="cn.xufx.kn"/>
 
     <!--使用后处理器加载数据源参数-->
     <context:property-override location="classpath:db.properties"/>
@@ -37,11 +37,11 @@
 
 </beans>
 <!--
-    将rg.fkit.hrm.dao下的所有接口当做spring的bean配置，之后可以进行依赖注入
-    <mybatis:scan base-package="org.fkit.hrm.dao"/>
+    将rg.fkit.kn.dao下的所有接口当做spring的bean配置，之后可以进行依赖注入
+    <mybatis:scan base-package="cn.xufx.kn.dao"/>
 
-    扫描org.fkit.hrm包下的所有java文件有注解的类，将其注册为bean，即创建对象
-    <context:component-scan base-package="org.fkit.hrm"/>
+    扫描cn.xufx.kn包下的所有java文件有注解的类，将其注册为bean，即创建对象
+    <context:component-scan base-package="cn.xufx.kn"/>
     <context:property-override location="classpath:db.properties"/>
 
     配置c3p0数据源

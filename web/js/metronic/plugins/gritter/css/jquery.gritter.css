@@ -1,22 +1,22 @@
 /* the norm */
-#gritter-notice-wrapper {
+#gritter-label-wrapper {
 	position:fixed;
 	top:20px;
 	right:20px;
 	width:301px;
 	z-index:9999;
 }
-#gritter-notice-wrapper.top-left {
+#gritter-label-wrapper.top-left {
     left: 20px;
     right: auto;
 }
-#gritter-notice-wrapper.bottom-right {
+#gritter-label-wrapper.bottom-right {
     top: auto;
     left: auto;
     bottom: 20px;
     right: 20px;
 }
-#gritter-notice-wrapper.bottom-left {
+#gritter-label-wrapper.bottom-left {
     top: auto;
     right: auto;
     bottom: 20px;
@@ -88,7 +88,7 @@
 	width:220px;
 	float:right;
 }
-/* for the light (white) version of the gritter notice */
+/* for the light (white) version of the gritter label */
 .gritter-light .gritter-item,
 .gritter-light .gritter-bottom,
 .gritter-light .gritter-top,

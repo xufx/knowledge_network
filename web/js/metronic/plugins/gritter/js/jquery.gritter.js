@@ -23,7 +23,7 @@
 		position: '',
 		class_name: '', // could be set to 'gritter-light' to use white notifications
 		fade_in_speed: 'medium', // how fast notifications fade in
-		fade_out_speed: 1000, // how fast the notices fade out
+		fade_out_speed: 1000, // how fast the labels fade out
 		time: 6000 // hang on the screen for...
 	}
 	
@@ -81,7 +81,7 @@
 		_tpl_close: '<div class="gritter-close"></div>',
 		_tpl_title: '<span class="gritter-title">[[title]]</span>',
 		_tpl_item: '<div id="gritter-item-[[number]]" class="gritter-item-wrapper [[item_class]]" style="display:none"><div class="gritter-top"></div><div class="gritter-item">[[close]][[image]]<div class="[[class_name]]">[[title]]<p>[[text]]</p></div><div style="clear:both"></div></div><div class="gritter-bottom"></div></div>',
-		_tpl_wrap: '<div id="gritter-notice-wrapper"></div>',
+		_tpl_wrap: '<div id="gritter-label-wrapper"></div>',
 		
 		/**
 		* Add a gritter notification to the screen
@@ -152,7 +152,7 @@
 				return false;
 			}
 
-			$('#gritter-notice-wrapper').addClass(position).append(tmp);
+			$('#gritter-label-wrapper').addClass(position).append(tmp);
 			
 			var item = $('#gritter-item-' + this._item_count);
 			
@@ -203,7 +203,7 @@
 			
 			// Check if the wrapper is empty, if it is.. remove the wrapper
 			if($('.gritter-item-wrapper').length == 0){
-				$('#gritter-notice-wrapper').remove();
+				$('#gritter-label-wrapper').remove();
 			}
 		
 		},
@@ -349,7 +349,7 @@
 			var before_close = ($.isFunction(params.before_close)) ? params.before_close : function(){};
 			var after_close = ($.isFunction(params.after_close)) ? params.after_close : function(){};
 			
-			var wrap = $('#gritter-notice-wrapper');
+			var wrap = $('#gritter-label-wrapper');
 			before_close(wrap);
 			wrap.fadeOut(function(){
 				$(this).remove();
@@ -402,12 +402,12 @@
 		},
 		
 		/**
-		* A check to make sure we have something to wrap our notices with
+		* A check to make sure we have something to wrap our labels with
 		* @private
 		*/  
 		_verifyWrapper: function(){
 		  
-			if($('#gritter-notice-wrapper').length == 0){
+			if($('#gritter-label-wrapper').length == 0){
 				$('body').append(this._tpl_wrap);
 			}
 		

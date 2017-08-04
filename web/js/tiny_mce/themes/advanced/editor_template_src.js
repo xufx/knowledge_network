@@ -1203,7 +1203,7 @@
 		// Commands gets called by execCommand
 
 		_sel : function(v) {
-			this.editor.execCommand('mceSelectNodeDepth', false, v);
+			this.editor.execCommand('mceSelectNodeKPh', false, v);
 		},
 
 		_mceInsertAnchor : function(ui, v) {

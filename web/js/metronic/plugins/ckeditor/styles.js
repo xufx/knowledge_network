@@ -3,7 +3,7 @@
  * For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
-// This file contains style definitions that can be used by CKEditor plugins.
+// This file contains style contents that can be used by CKEditor plugins.
 //
 // The most common use for it is the "stylescombo" plugin, which shows a combo
 // in the editor toolbar, containing all styles. Other plugins instead, like

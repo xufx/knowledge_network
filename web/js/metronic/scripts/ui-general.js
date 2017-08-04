@@ -47,7 +47,7 @@ var UIGeneral = function () {
         $('#gritter-sticky').click(function () {
             var unique_id = $.gritter.add({
                 // (string | mandatory) the heading of the notification
-                title: 'This is a sticky notice!',
+                title: 'This is a sticky label!',
                 // (string | mandatory) the text inside the notification
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
                 // (string | optional) the image to display on the left
@@ -66,7 +66,7 @@ var UIGeneral = function () {
 
             $.gritter.add({
                 // (string | mandatory) the heading of the notification
-                title: 'This is a regular notice!',
+                title: 'This is a regular label!',
                 // (string | mandatory) the text inside the notification
                 text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
                 // (string | optional) the image to display on the left
@@ -85,14 +85,14 @@ var UIGeneral = function () {
 
             $.gritter.add({
                 // (string | mandatory) the heading of the notification
-                title: 'This is a notice with a max of 3 on screen at one time!',
+                title: 'This is a label with a max of 3 on screen at one time!',
                 // (string | mandatory) the text inside the notification
                 text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
                 // (string | optional) the image to display on the left
                 image: 'resource/metronic/img/avatar1.jpg',
                 // (bool | optional) if you want it to fade out on its own or just sit there
                 sticky: false,
-                // (function) before the gritter notice is opened
+                // (function) before the gritter label is opened
                 before_open: function () {
                     if ($('.gritter-item-wrapper').length == 3) {
                         // Returning false prevents a new gritter from opening
@@ -106,7 +106,7 @@ var UIGeneral = function () {
         $('#gritter-without-image').click(function () {
             $.gritter.add({
                 // (string | mandatory) the heading of the notification
-                title: 'This is a notice without an image!',
+                title: 'This is a label without an image!',
                 // (string | mandatory) the text inside the notification
                 text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.'
             });

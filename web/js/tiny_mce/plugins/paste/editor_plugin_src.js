@@ -437,7 +437,7 @@
 									i = 0,
 									s = explode(trim(style).replace(/&quot;/gi, "'"), ";");
 
-								// Examine each style definition within the tag's style attribute
+								// Examine each style content within the tag's style attribute
 								each(s, function(v) {
 									var name, value,
 										parts = explode(v, ":");
@@ -512,7 +512,7 @@
 												return;
 										}
 
-										// Eliminate all MS Office style definitions that have no CSS equivalent by examining the first characters in the name
+										// Eliminate all MS Office style contents that have no CSS equivalent by examining the first characters in the name
 										if (/^(mso|column|font-emph|lang|layout|line-break|list-image|nav|panose|punct|row|ruby|sep|size|src|tab-|table-border|text-(?!align|decor|indent|trans)|top-bar|version|vnd|word-break)/.test(name)) {
 											return;
 										}

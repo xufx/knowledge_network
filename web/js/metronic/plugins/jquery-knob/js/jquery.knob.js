@@ -20,7 +20,7 @@
     "use strict";
 
     /**
-     * Definition of globals and core
+     * Content of globals and core
      */
     var k = {}, // kontrol
         max = Math.max,
@@ -35,7 +35,7 @@
     /**
      * Kontrol Object
      *
-     * Definition of an abstract UI control
+     * Content of an abstract UI control
      *
      * Each concrete component must call this one.
      * <code>

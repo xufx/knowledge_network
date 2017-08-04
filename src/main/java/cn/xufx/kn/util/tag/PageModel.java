@@ -1,5 +1,5 @@
-package cn.xu.kn.util.tag;
-import org.fkit.hrm.util.common.HrmConstants;
+package cn.xufx.kn.util.tag;
+import cn.xufx.kn.util.common.KnConstants;
 /**
  * Created by xufuxiu on 2017/7/18.
  */
@@ -9,7 +9,7 @@ public class PageModel
     private int pageIndex;//当前页面，通过前端jsp页面获取
 
     //每页分多少条数据，由前端jsp页面指定
-    private int pageSize= HrmConstants.PAGE_DEFAULT_SIZE=4;
+    private int pageSize= KnConstants.PAGE_DEFAULT_SIZE=4;
     private int totalSize;//总页数
     public int getRecordCount()
     {// 数据条数，
@@ -33,7 +33,7 @@ public class PageModel
     }
     public int getPageSize()
     {//每页的记录数
-        this.pageSize=this.pageSize<=HrmConstants.PAGE_DEFAULT_SIZE?HrmConstants.PAGE_DEFAULT_SIZE:this.pageSize;
+        this.pageSize=this.pageSize<=KnConstants.PAGE_DEFAULT_SIZE?KnConstants.PAGE_DEFAULT_SIZE:this.pageSize;
         return pageSize;
     }
     public void setPageSize(int pageSize)

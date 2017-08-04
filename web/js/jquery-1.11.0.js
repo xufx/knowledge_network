@@ -8518,7 +8518,7 @@ jQuery.parseJSON = function( data ) {
 	}
 
 	var requireNonComma,
-		depth = null,
+		kph = null,
 		str = jQuery.trim( data + "" );
 
 	// Guard against invalid (and possibly dangerous) input by ensuring that nothing remains
@@ -8527,22 +8527,22 @@ jQuery.parseJSON = function( data ) {
 
 		// Force termination if we see a misplaced comma
 		if ( requireNonComma && comma ) {
-			depth = 0;
+			kph = 0;
 		}
 
-		// Perform no more replacements after returning to outermost depth
-		if ( depth === 0 ) {
+		// Perform no more replacements after returning to outermost kph
+		if ( kph === 0 ) {
 			return token;
 		}
 
 		// Commas must not follow "[", "{", or ","
 		requireNonComma = open || comma;
 
-		// Determine new depth
-		// array/object open ("[" or "{"): depth += true - false (increment)
-		// array/object close ("]" or "}"): depth += false - true (decrement)
-		// other cases ("," or primitive): depth += true - true (numeric cast)
-		depth += !close - !open;
+		// Determine new kph
+		// array/object open ("[" or "{"): kph += true - false (increment)
+		// array/object close ("]" or "}"): kph += false - true (decrement)
+		// other cases ("," or primitive): kph += true - true (numeric cast)
+		kph += !close - !open;
 
 		// Remove this token
 		return "";
