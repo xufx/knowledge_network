@@ -1,0 +1,11 @@
+INSERT INTO `kp_pre_next` VALUES (2, 1);
+INSERT INTO `kp_pre_next` VALUES (1, 3);
+INSERT INTO `kp_pre_next` VALUES (23, 3);
+INSERT INTO `kp_pre_next` VALUES (2, 5);
+INSERT INTO `kp_pre_next` VALUES (2, 6);
+INSERT INTO `kp_pre_next` VALUES (2, 7);
+INSERT INTO `kp_pre_next` VALUES (1, 11);
+INSERT INTO `kp_pre_next` VALUES (13, 14);
+INSERT INTO `kp_pre_next` VALUES (27, 26);
+INSERT INTO `kp_pre_next` VALUES (23, 30);
+INSERT INTO `kp_pre_next` VALUES (23, 33);

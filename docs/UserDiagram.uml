@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="6.545454545454447" y="-33.636363636363626">cn.xufx.kn.dao.UserDao</node>
+    <node x="7.136363636363484" y="173.81818181818184">cn.xufx.kn.controller.UserController</node>
+    <node x="6.363636363636374" y="340.0">cn.xufx.kn.service.KNService</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.1" x="486.090909090909" y="241.90909090909088" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

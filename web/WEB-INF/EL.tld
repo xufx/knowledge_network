@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    					http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+   						version="2.1">
+
+  <tlib-version>1.0</tlib-version>
+	<short-name>myfunctions</short-name>
+	<uri>http://www.jeelearning.com/myfunctions</uri><!--对应jsp文件的taglib指令-->
+	|<function>
+	<description>将给的字符串反转</description>
+	<name>reverse</name><!--不需要与真实方法名相同-->
+	<function-class>cn.xufx.kn.jspGetData.Functions</function-class>
+	<function-signature>java.lang.String reverse(java.lang.String)</function-signature>
+</function>
+
+</taglib>
