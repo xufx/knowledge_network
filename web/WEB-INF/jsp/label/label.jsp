@@ -128,7 +128,7 @@
 				<td>操作</td>
 			</tr>
 			<c:forEach items="${requestScope.labels}" var="label" varStatus="stat">
-				<tr id="data_${stat.index}" align="center" class="main_trbg" onMouseOver="move(this);" onMouseOut="out(this);">
+				<tr id="data_${stat.index}" align="center" class="main_trbg" >
 					<td><input type="checkbox" id="box_${stat.index}" value="${label.id}"></td>
 					 <td>${label.name }</td>
 					 <td align="center" width="40px;"><a href="${ctx }/label/updateLabel?flag=1&id=${label.id}">

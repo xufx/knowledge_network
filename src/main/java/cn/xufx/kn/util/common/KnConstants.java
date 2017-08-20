@@ -7,7 +7,8 @@ public class KnConstants
     //数据库表常量
     public static final String KPTABLE="knowledge_point";
     public static final String KP_LABEL_TABLE="knowledge_point_label";
-    public static final String KP_RELATION_TABLE="kp_relation";
+    public static final String KP_PRE_NEXT_TABLE="kp_pre_next";
+    public static final String KP_RELATE_TABLE="kp_relate";
     public static final String INSTRUMENTTABLE="instrument";
     public static final String EXPERIMENTTABLE="experiment";
     public static final String EXPERIMENT_INSTRUMENT_TABLE="experiment_instrument";

@@ -20,6 +20,12 @@
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
 	<link href="${ctx}/css/pager.css" type="text/css" rel="stylesheet" />
+		<style type="text/css">
+			.kpDiv
+			{
+				margin-top:30px;
+			}
+		</style>
 
 </head>
 <body>
@@ -27,120 +33,71 @@
   <tr><td height="10"></td></tr>
   <tr>
     <td width="15" height="32"><img src="${ctx}/images/main_locleft.gif" width="15" height="32"></td>
-	<td class="main_locbg font2"><img src="${ctx}/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：知识点管理  &gt; 添加知识点</td>
+	<td class="main_locbg font2"><img src="${ctx}/images/pointer.gif">&nbsp;&nbsp;&nbsp;当前位置：知识点管理  &gt; 添加知识点关系</td>
 	<td width="15" height="32"><img src="${ctx}/images/main_locright.gif" width="15" height="32"></td>
   </tr>
 </table>
-<table width="100%" height="90%" border="0" cellpadding="5" cellspacing="0" class="main_tabbor">
-  <tr valign="top">
-    <td>
-    	 <form action="${ctx}/kp/addKP" id="kpForm" method="post">
-    	 	<!-- 隐藏表单，flag表示添加标记 -->
-    	 	<input type="hidden" name="flag" value="2">
-		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
-		    <tr><td class="font3 fftd">
-		    	<table>
-		    		<tr>
-		    			<td class="font3 fftd">知识点名称：<input type="text" name="name" id="name" size="30"/></td>
-		    		</tr>
-					<tr>
-						<td class="font3 fftd">知识点简介：<br/>
-							<textarea name="remark" cols="88" rows="3" id="remark">${kp.remark }</textarea>
-						</td>
-					</tr>
-					<tr>
-						<td class="font3 fftd">内容：<br/>
-							<textarea name="content" cols="88" rows="3" id="content">${kp.content }</textarea></td>
-					</tr>
-					<tr>
-						<td class="font3 fftd">学习目标：<br/>
-							<textarea name="learnGoal" cols="88" rows="3" id="learnGoal">${kp.learnGoal}</textarea>
-						</td>
-					</tr>
-					<tr>
-						<td class="font3 fftd">考试频率：
-							<select name="examFrequency" style="width:143px;">
-								<option value="0">--请选择--</option>
-								<option value="1">没考过</option>
-								<option value="2">偶尔考</option>
-								<option value="3">经常考</option>
-								<option value="4">高频考点</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="font3 fftd">学习文档：<input type="text" name="doc" id="doc" size="20"/></td>
-					</tr>
-					<tr>
-						<td class="font3 fftd">学习视频：<input type="text" name="video" id="video" size="20"/></td>
-					</tr>
-					<tr>
-						<td class="font3 fftd">参考资料：<br/>
-							<textarea name="reference" cols="88" rows="3" id="reference">${kp.reference }</textarea></td>
-					</tr>
-					<tr>
-						<td class="font3 fftd">备注：<br/>
-							<textarea name="memo" cols="88" rows="3" id="memo">${kp.memo }</textarea>
-						</td>
-					</tr>
-		    	</table>
-		    </td></tr>
-			<tr><td class="main_tdbor"></td></tr>
-			
-			<tr><td align="left" class="fftd"><input type="submit" value="添加 ">&nbsp;&nbsp;<input type="reset" value="取消 "></td></tr>
-		  </table>
-		 </form>
-	</td>
-  </tr>
-</table>
+<div class="kpDiv">
+	<select id="firstKP">
+		<c:forEach items="${requestScope.kps}" var="kp" varStatus="stat">
+			<option value="${kp.id}">${kp.name}</option>
+		</c:forEach>
+	</select>
+	<select name="relation" id="relation">
+		<option value="1">后续知识点</option>
+		<option value="2">前续知识点</option>
+		<option value="3">相关知识点</option>
+	</select>
+	<select id="secondKP">
+		<c:forEach items="${requestScope.kps}" var="kp" varStatus="stat">
+			<option value="${kp.id}">${kp.name}</option>
+		</c:forEach>
+	</select>
+	<button id="btn_search">添加</button>
+</div>
 <div style="height:10px;"></div>
 <script type="text/javascript">
-	$(function(){
-		/** 知识点表单提交 */
-		$("#kpForm").submit(function(){
-			var name = $("#name");
-			var remark = $("#remark");
-			var name = $("#content");
-			var name = $("#learnGoal");
-			var name = $("#learnAdvise");
-			var name = $("#examFrequency");
-			var name = $("#reference");
-			var name = $("#memo");
-			var msg = "";
-			if ($.trim(name.val()) == ""){
-				msg = "知识点名称不能为空！";
-				name.focus();
-			}
-			else if ($.trim(remark.val()) == ""){
-				msg = "知识点简介不能为空！";
-				remark.focus();
-			}
-			else if ($.trim(content.val()) == ""){
-				msg = "内容不能为空！";
-				content.focus();
-			}
-			else if ($.trim(learnGoal.val()) == ""){
-				msg = "学习目标不能为空！";
-				learnGoal.focus();
-			}
-			else if ($.trim(reference.val()) == ""){
-				msg = "参考资料不能为空！";
-				reference.focus();
-			}
-			else if ($.trim(examFrequency.val()) == ""){
-				msg = "考试频率不能为空！";
-				examFrequency.focus();
-			}
+	$(document).ready(function ()
+	{
+		/*点击查询知识点之间的关系是否存在*/
+			$("#btn_search").click(function ()
+			{
+				alert("进入jquery函数");
+				var firstID=$("#firstKP").val();
+				var relation=$("#relation").val();
+				var secondID=$("#secondKP").val();
+				alert("firstID="+firstID+",relation="+relation+",secondID="+secondID);
+				var url="${ctx}/kpr/searchRelations?firstID="+firstID+"&relation="+relation+"&secondID="+secondID;
+				if(firstID!=secondID)
+				{
+					$.get(url,function (data)
+					{alert(data);
+						if(data[0]==true||data[1]==true||data[2]==true)
+						{
+							alert("此种关系已经存在，请重新选择知识点");
+							/*if (data[3]==true)
+							{
+								alert("一个知识点不能既是前续知识点又是后续知识点")
+							}*/
+						}else
+						{
+							alert("此种关系不存在，可以添加");
+							addRelation(firstID,relation,secondID);
+						}
+					});
+				}else
+				{
+					alert("请选择两个不同的知识点");
+				}
 
-			if (msg != ""){
-				$.ligerDialog.error(msg);
-				return false;
-			}else{
-				return true;
-			}
-			$("#kpForm").submit();
-		});
+			});
 	});
+	function addRelation(firstID,relation,secondID)
+	{
+			alert("进入addRelation函数");
+			var url="${ctx}/kpr/addRelations?firstID="+firstID+"&relation="+relation+"&secondID="+secondID;
+		window.location.href=url;
+	}
 </script>
 </body>
 </html>

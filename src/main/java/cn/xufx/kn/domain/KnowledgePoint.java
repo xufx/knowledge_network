@@ -17,8 +17,11 @@ public class KnowledgePoint
 
     private String doc;//学习文档
     private String video;//学习视频
-    private List<Label> labels;//标签
 
+    private List<Label> labels;//标签
+    private List<KnowledgePoint>prekps;
+    private List<KnowledgePoint>nextkps;
+    private List<KnowledgePoint>relatekps;
 
     public Integer getId()
     {
@@ -107,6 +110,30 @@ public class KnowledgePoint
     public void setLabels(List<Label> labels)
     {
         this.labels = labels;
+    }
+    public List<KnowledgePoint> getPrekps()
+    {
+        return prekps;
+    }
+    public void setPrekps(List<KnowledgePoint> prekps)
+    {
+        this.prekps = prekps;
+    }
+    public List<KnowledgePoint> getNextkps()
+    {
+        return nextkps;
+    }
+    public void setNextkps(List<KnowledgePoint> nextkps)
+    {
+        this.nextkps = nextkps;
+    }
+    public List<KnowledgePoint> getRelatekps()
+    {
+        return relatekps;
+    }
+    public void setRelatekps(List<KnowledgePoint> relatekps)
+    {
+        this.relatekps = relatekps;
     }
     @Override
     public String toString()

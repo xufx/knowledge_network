@@ -49,7 +49,7 @@
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
             <el-ignored>false</el-ignored><!--使用EL表达式-->
-            <scripting-invalid>true</scripting-invalid><!--不能在页面使用java脚本-->
+            <scripting-invalid>false</scripting-invalid><!--能在页面使用java脚本-->
             <!--给所有的jsp页面导入要依赖的库，taglib.jsp是一个全局标签库-->
             <include-prelude>/WEB-INF/jsp/taglib.jsp</include-prelude>
         </jsp-property-group>

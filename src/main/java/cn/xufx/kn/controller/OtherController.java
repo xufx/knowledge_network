@@ -1,7 +1,7 @@
 package cn.xufx.kn.controller;
 import cn.xufx.kn.domain.Person;
-import cn.xufx.kn.service.KNService;
-import cn.xufx.kn.service.KPRelativeService;
+import cn.xufx.kn.service.KPService;
+import cn.xufx.kn.service.KPRService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,10 +17,10 @@ public class OtherController
 {
     @Autowired
     @Qualifier("kprService")
-    private KPRelativeService kprService;
+    private KPRService kprService;
     @Autowired
-    @Qualifier("knService")
-    private KNService knService;
+    @Qualifier("kpService")
+    private KPService KPService;
     /*从jsp页面获得List的测试*/
     @RequestMapping(value = "/jspGet")
     public String jspGetList(Model model)

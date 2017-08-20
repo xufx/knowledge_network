@@ -118,6 +118,7 @@ public class KPDynaSqlProvider
                 {
                     VALUES("memo","#{memo}");
                 }
+                WHERE("id=#{id}");
             }
         }.toString();
     }

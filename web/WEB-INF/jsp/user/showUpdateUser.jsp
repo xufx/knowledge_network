@@ -26,17 +26,13 @@
     	/** 实验仪器表单提交，会在提交之前被调用 */
 		$("#userForm").submit(function(){
 			var username = $("#username");
-			var status = $("#status");
 			var loginname = $("#loginname");
 			var password = $("#password");
 			var msg = "";
 			console.log("showUpdateUser.jsp username:"+username);
 			if ($.trim(username.val()) == ""){
-				msg = "姓名不能为空！";
+				msg = "用户名不能为空！";
 				username.focus();
-			}else if ($.trim(status.val()) == ""){
-				msg = "状态不能为空！";
-				status.focus();
 			}else if ($.trim(loginname.val()) == ""){
 				msg = "登录名不能为空！";
 				loginname.focus();
@@ -80,7 +76,6 @@
 		    	<table>
 		    		<tr>
 		    			<td class="font3 fftd">姓名：<input type="text" name="username" id="username" size="20" value="${user.username }"/></td>
-		    			<td class="font3 fftd">状态：<input type="text" name="status" id="status" size="20" value="${user.status }"/></td>
 		    		</tr>
 		    			
 		    		<tr>

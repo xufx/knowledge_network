@@ -83,7 +83,7 @@
 					  <tr>
 					    <td class="font3">
 					    	用户名：<input type="text" name="username">
-					    	用户状态：<input type="text" name="status">
+					    	登录名：<input type="text" name="loginname">
 					    	 <input type="submit" value="搜索"/>
 					    	<input id="delete" type="button" value="删除"/>
 					    </td>
@@ -105,18 +105,16 @@
 			  <td>登录名</td>
 			  <td>密码</td>
 			  <td>用户名</td>
-			  <td>状态</td>
 			  <td>创建时间</td>
 			  <td align="center">操作</td>
 			</tr>
 			<c:forEach items="${requestScope.users}" var="user" varStatus="stat">
-				<tr id="data_${stat.index}" align="center" class="main_trbg" onMouseOver="move(this);" onMouseOut="out(this);">
+				<tr id="data_${stat.index}" align="center" class="main_trbg" >
 					<td><input type="checkbox" id="box_${stat.index}" value="${user.id}"></td>
 					 <td>${user.loginname }</td>
 					  <td>${user.password }</td>
 					  <td>${user.username }</td>
-					  <td>${user.status }</td>
-					  <td><f:formatDate value="${user.createDate}" 
+					  <td><f:formatDate value="${user.createDate}"
 								type="date" dateStyle="long"/></td>
 					 <td align="center" width="40px;"><a href="${ctx}/user/updateUser?flag=1&id=${user.id}">
 							<img title="修改" src="${ctx}/images/update.gif"/></a>

@@ -14,7 +14,24 @@
     <!--自动扫描该包，springmvc会将带有@Controller注解的类注册为spring的controller-->
 <context:component-scan base-package="cn.xufx.kn.controller"/>
 
-    <mvc:annotation-driven/><!--设置默认配置方案-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"></bean>
+            <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"></bean>
+            <!--配置fastjson中实现HttpMessageConverter接口的转换器-->
+            <!--FastJsonHttpMessageConverter是fastjson中实现HttpMessageConverter接口的类-->
+            <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <mvc:default-servlet-handler/><!--使用默认的Servlet响应静态文件-->
 
@@ -45,4 +62,6 @@
             <value>UTF-8</value><!--必须和jsp的pageEncoding一致，默认是iso-8859-1-->
         </property>
     </bean>
+    <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+
 </beans>

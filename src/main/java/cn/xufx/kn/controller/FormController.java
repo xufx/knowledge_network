@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FormController
 {
+
+    /*进入首页的请求处理*/
     @RequestMapping(value = "/{formName}")
     public String loginForm(@PathVariable String formName)
     {
@@ -15,4 +17,5 @@ public class FormController
         System.out.println("formName:"+formName);
         return formName;//请求变为http://localhost:8080/WEB-INF/jsp/loginform.jsp springmvc-config.xml配置了视图匹配路径
     }
+
 }

@@ -83,7 +83,7 @@
 	<div class="page-lock">
 		<div class="page-logo" style="margin-bottom: 2px">
 			<a class="brand" href="login.html"
-				style="font-size: 22px; color: #FFF;"> 知识网络<font color="#FFCC00">Kn</font><span
+				style="font-size: 22px; "> 知识网络<font color="#FFCC00">管理</font><span
 				style="font-size: 13px;">1.0</span> 系统
 			</a>
 		</div>
@@ -121,19 +121,20 @@
 									value="${password}">
 							</div>
 						</div>
+						<button type="submit" id="login-submit-btn" class="btn green"
+						<%--style="margin-left: 20px"--%>>
+							登录 <i class="m-icon-swapright m-icon-white"></i>
+						</button>
 					</div>
 				</div>
 				<div class="relogin">
 						<!-- 单击登录 -->
-						<button type="submit" id="login-submit-btn" class="btn green"
-							style="margin-left: 20px">
-							登录 <i class="m-icon-swapright m-icon-white"></i>
-						</button>
+
 				</div>
 			</div>
-			<div class="page-footer" style="color: #fff">
+			<%--<div class="page-footer">
 				兼容浏览器IE8+，最佳分辨率1280*800. <br>2015 @ 知识网络
-			</div>
+			</div>--%>
 		</form>
 	</div>
 	

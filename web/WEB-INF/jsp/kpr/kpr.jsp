@@ -28,56 +28,22 @@
 			display: none;
 		}
 		.kpColor{
-			color: #942a25;
+			color: #880000;
 		}
-		.kpTable
+		.kpTable,.btn_manage
 		{
 			margin-top: 20px;
 		}
+		.btn_delete
+		{
+			padding-left: 20px;
+		}
+		#kp_id
+		{
+			display: none;
+		}
 	</style>
-	<script type="text/javascript">
-		$(function(){
-			/** 获取上一次选中的知识点数据 */
-			var boxs  = $("input[type='checkbox'][id^='box_']");
 
-			/** 给全选按钮绑定点击事件  */
-			$("#checkAll").click(function(){
-				// this是checkAll  this.checked是true
-				// 所有数据行的选中状态与全选的状态一致
-				boxs.attr("checked",this.checked);
-			})
-
-			/** 给数据行绑定鼠标覆盖以及鼠标移开事件  */
-			$("tr[id^='data_']").hover(function(){
-				$(this).css("backgroundColor","#eeccff");
-			},function(){
-				$(this).css("backgroundColor","#ffffff");
-			})
-
-
-			/** 删除实验仪器绑定点击事件 */
-			$("#delete").click(function(){
-				/** 获取到用户选中的复选框  */
-				var checkedBoxs = boxs.filter(":checked");
-				if(checkedBoxs.length < 1){
-					$.ligerDialog.error("请选择一个需要删除的知识点！");
-				}else{
-					/** 得到用户选中的所有的需要删除的ids */
-					var ids = checkedBoxs.map(function(){
-						return this.value;
-					})
-
-					$.ligerDialog.confirm("确认要删除吗?","删除知识点",function(r){
-						if(r){
-							// alert("删除："+ids.get());
-							// 发送请求
-							window.location = "${ctx }/kp/removeKP?ids=" + ids.get();
-						}
-					});
-				}
-			})
-		})
-	</script>
 </head>
 <body>
 <!-- 导航 -->
@@ -92,50 +58,186 @@
 <table class="kpTable">
 	<tr>
 		<td>知识点
-			<input type="text" name="kp_id" id="kp_id" size="5" class="kpid" value="${kp.id}" readonly />
+			<input type="text" name="kp_id" id="kp_id" size="5" class="kp_id" value="${kp.id}" readonly />
 			<span class="kpColor">${kp.name}</span>
 		</td>
 	</tr>
 </table>
 <table  class="kpTable">
-	<tr><td>前续知识点</td></tr>
-	<c:forEach items="${requestScope.pre_kps}" var="pre_kp" varStatus="stat">
+	<tr>
+		<td id="pre_relation">前续知识点</td>
+		<td ><button class="btn_delete" data-relation="1" id="pre_delete">删除</button></td>
+	</tr>
+	<c:choose>
+		<c:when test="${empty requestScope.pre_kps}">
+				<tr>
+					<td  class="kpColor">无</td>
+				</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${requestScope.pre_kps}" var="pre_kp" varStatus="stat">
+				<tr>
+					<td><input type="checkbox" id="prebox_${stat.index}" value="${pre_kp.id}"></td>
+					<td  class="kpColor">${pre_kp.name}</td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
+
+	<%--<c:forEach items="${requestScope.pre_kps}" var="pre_kp" varStatus="stat">
 		<tr>
 			<td  class="kpColor">${pre_kp.name}</td>
 		</tr>
-	</c:forEach>
+	</c:forEach>--%>
 </table>
 <table  class="kpTable">
 	<tr>
-		<td>后续知识点
-		</td>
+		<td id="next_relation">后续知识点</td>
+		<td ><button class="btn_delete" data-relation="2" id="next_delete">删除</button></td>
 	</tr>
-	<c:forEach items="${requestScope.next_kps}" var="next_kp" varStatus="stat">
-		<tr>
-			<td class="kpColor">${next_kp.name}</td>
-		</tr>
-	</c:forEach>
+	<c:choose>
+		<c:when test="${empty requestScope.next_kps}">
+			<tr>
+				<td  class="kpColor">无</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${requestScope.next_kps}" var="next_kp" varStatus="stat">
+				<tr>
+					<td><input type="checkbox" id="nextbox_${stat.index}" value="${next_kp.id}"></td>
+					<td  class="kpColor">${next_kp.name}</td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
 </table>
 <table  class="kpTable">
-	<tr><td>相关知识点</td></tr>
-	<c:forEach items="${requestScope.relate_kps}" var="relate_kp" varStatus="stat">
-		<tr>
-			<td class="kpColor">${relate_kp.name}</td>
-		</tr>
-	</c:forEach>
+	<tr>
+		<td id="relate_relation">相关知识点</td>
+		<td ><button class="btn_delete" data-relation="2" id="relate_delete">删除</button></td>
+	</tr>
+	<c:choose>
+		<c:when test="${empty requestScope.relate_kps}">
+			<tr>
+				<td  class="kpColor">无</td>
+			</tr>
+		</c:when>
+		<c:otherwise>
+			<c:forEach items="${requestScope.relate_kps}" var="relate_kp" varStatus="stat">
+				<tr>
+					<td><input type="checkbox" id="relatebox_${stat.index}" value="${relate_kp.id}"></td>
+					<td  class="kpColor">${relate_kp.name}</td>
+				</tr>
+			</c:forEach>
+		</c:otherwise>
+	</c:choose>
 </table>
-<a id="preManage" href="/kpr/preManage?kp_id=" name="kp_id">前续知识点管理</a>
-<a id="nextManage" href="">后续知识点管理</a>
-<a id="relateManage" href="">相关知识点管理</a>
+<div class="btn_manage">
+	<a href="${ctx}/kpr/showAddKPR" id="addRelation">添加知识点关系</a><%--请求直接跳转--%>
+</div>
 <div style="height:10px;"></div>
-<script type="application/javascript">
-	$(document).ready(function ()
+<script type="text/javascript">
+	$(function()
 	{
-		/*点击修改后续知识点*/
-		$("#preManage").click(function ()
-		{
-			var kp_id=$('#kp_id').val();
+		var kp_id=$("#kp_id").val();
+		/** 获取选中的知识点 */
+		var pre_boxs  = $("input[type='checkbox'][id^='prebox_']");
+		var next_boxs  = $("input[type='checkbox'][id^='nextbox_']");
+		var relate_boxs  = $("input[type='checkbox'][id^='relatebox_']");
+
+		/** 给全选按钮绑定点击事件  */
+		$("#checkAll").click(function(){
+			// this是checkAll  this.checked是true
+			// 所有数据行的选中状态与全选的状态一致
+			boxs.attr("checked",this.checked);
 		})
+
+		/** 给数据行绑定鼠标覆盖以及鼠标移开事件  */
+		$("tr[id^='data_']").hover(function(){
+			$(this).css("backgroundColor","#eeccff");
+		},function(){
+			$(this).css("backgroundColor","#ffffff");
+		})
+
+
+		/*点击删除前续知识点*/
+		$("#pre_delete").click(function ()
+		{
+			var checkedBoxs = pre_boxs.filter(":checked");
+			if(checkedBoxs.length < 1){
+				$.ligerDialog.error("请选择一个需要删除的前续知识点！");
+			}else
+			{
+				/** 得到用户选中的所有的需要删除的ids */
+				var ids = checkedBoxs.map(function(){
+					return this.value;
+				})
+
+				$.ligerDialog.confirm("确认要删除吗?","删除知识点",function(r){
+					if(r){
+						alert("删除："+ids.get());
+						// 发送请求
+						window.location = "${ctx}/kp/removePreKP?kpID="+kp_id+"&ids=" + ids.get();
+					}
+				});
+			}
+		});
+		/*点击删除后续知识点*/
+		$("#next_delete").click(function ()
+		{
+			var checkedBoxs = next_boxs.filter(":checked");
+			if(checkedBoxs.length < 1){
+				$.ligerDialog.error("请选择一个需要删除的后续知识点！");
+			}else
+			{
+				/** 得到用户选中的所有的需要删除的ids */
+				var ids = checkedBoxs.map(function(){
+					return this.value;
+				})
+
+				$.ligerDialog.confirm("确认要删除吗?","删除知识点",function(r){
+					if(r){
+						alert("删除："+ids.get());
+						// 发送请求
+						window.location = "${ctx}/kp/removeNextKP?kpID="+kp_id+"&ids=" + ids.get();
+					}
+				});
+			}
+		});
+		/*点击删除相关知识点*/
+		$("#relate_delete").click(function ()
+		{
+			var checkedBoxs = relate_boxs.filter(":checked");
+			if(checkedBoxs.length < 1){
+				$.ligerDialog.error("请选择一个需要删除的相关知识点！");
+			}else
+			{
+				/** 得到用户选中的所有的需要删除的ids */
+				var ids = checkedBoxs.map(function(){
+					return this.value;
+				})
+
+				$.ligerDialog.confirm("确认要删除吗?","删除知识点",function(r){
+					if(r){
+						alert("删除："+ids.get());
+						// 发送请求
+						window.location = "${ctx}/kp/removeRelateKP?kpID="+kp_id+"&ids=" + ids.get();
+					}
+				});
+			}
+		})
+    })
+
+</script>
+<script type="application/javascript">
+	$(Document).ready(function ()
+	{
+        $(".btn_delete").each(function () {
+            alert("进入删除知识点");
+            $(this).click(function () {
+                alert("进入点击事件");
+            })
+        })
 	})
 </script>
 </body>

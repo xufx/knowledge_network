@@ -40,9 +40,17 @@
 		  <table width="100%" border="0" cellpadding="0" cellspacing="10" class="main_tab">
 		    <tr><td class="font3 fftd">
 		    	<table>
-		    		<tr>
+
+					<tr>
+						<td class="font3">
+							知识点名称：<input type="text" name="name" id="name">
+							<input type="button" id="kpInput" value="查看知识点是否已经存在"/>
+						</td>
+						<td id="resultShow"><% request.getAttribute("kp");%></td>
+					</tr>
+		    		<%--<tr>
 		    			<td class="font3 fftd">知识点名称：<input type="text" name="name" id="name" size="30"/></td>
-		    		</tr>
+		    		</tr>--%>
 					<tr>
 						<td class="font3 fftd">知识点简介：<br/>
 							<textarea name="remark" cols="88" rows="3" id="remark">${kp.remark }</textarea>
@@ -96,6 +104,24 @@
 <div style="height:10px;"></div>
 <script type="text/javascript">
 	$(function(){
+		/*搜索知识点*/
+		$("#kpInput").click(function () {
+			alert("开始搜索知识点");
+			var kpName=$("#name").val();
+			alert("kpName="+kpName);
+			if (kpName!=null && kpName!="")
+			{
+				var url="${ctx}/kp/selectKPByName?name="+kpName;
+                alert("url="+url);
+				$.ajax(url,function (data)
+				{
+                    alert(data);
+				});
+			}else
+			{
+				alert("请输入知识点名称");
+			}
+        });
 		/** 知识点表单提交 */
 		$("#kpForm").submit(function(){
 			var name = $("#name");
@@ -140,6 +166,15 @@
 			}
 			$("#kpForm").submit();
 		});
+
+
+        //获取url中的参数
+        function getUrlParam(name)
+        {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
 	});
 </script>
 </body>

@@ -1,7 +1,6 @@
 package cn.xufx.kn.dao;
 import cn.xufx.kn.dao.provider.KPRDynaSqlProvider;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -30,5 +29,19 @@ public interface KPRDao
     @InsertProvider(type = KPRDynaSqlProvider.class,method="insertPreNext")
     void insertPreNext(Map<Integer,Integer> params);
 
+    /*插入相关知识点*/
+    @InsertProvider(type = KPRDynaSqlProvider.class,method="insertRelate")
+    void insertRelated(Integer firstID , Integer secondID);
+
+    /*删除前续知识点*/
+    @DeleteProvider(type = KPRDynaSqlProvider.class,method="deletePreKPS")
+    void deletePreKPS(Integer id, String ids);
+
+    /*删除知识点-前续知识点对*/
+    @DeleteProvider(type = KPRDynaSqlProvider.class,method="deletePreNextKP")
+    void deletePreNextKP(Integer pre_id, Integer id);
+    /*删除相关知识点*/
+    @DeleteProvider(type = KPRDynaSqlProvider.class,method="deleteRelateKPS")
+    void deleteRelateKPS(Integer id, Integer relate_id);
 
 }

@@ -1,6 +1,6 @@
 package cn.xufx.kn.controller;
 import cn.xufx.kn.domain.User;
-import cn.xufx.kn.service.KNService;
+import cn.xufx.kn.service.UserService;
 import cn.xufx.kn.util.common.KnConstants;
 import cn.xufx.kn.util.tag.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +19,8 @@ import java.util.List;
 public class UserController
 {
     @Autowired
-    @Qualifier("knService")
-    private KNService knService;
+    @Qualifier("userService")
+    private UserService userService;
 
     @RequestMapping(value = "/login")
     public ModelAndView login(//获得前端jsp页面传递过来的参数
@@ -30,7 +30,7 @@ public class UserController
             ModelAndView mv)
     {
         System.out.println("UserController");
-        User user=knService.login(loginname,password);
+        User user=userService.login(loginname,password);
         if (user!=null)
         {/*将用户保存到HttpSession中*/
             session.setAttribute(KnConstants.USER_SESSION,user);//然后进入AuthorizedInterceptor.preHandle()
@@ -55,7 +55,7 @@ public class UserController
         PageModel pageModel=new PageModel();
         if (pageIndex!=null)pageModel.setPageIndex(pageIndex);
         /*查询用户信息*/
-        List<User> users=knService.findUser(user,pageModel);
+        List<User> users=userService.findUser(user,pageModel);
         model.addAttribute("users",users);
         model.addAttribute("pageModel",pageModel);
         return "user/user";
@@ -67,25 +67,25 @@ public class UserController
         String[] idArray=ids.split(",");
         for(String id:idArray)
         {
-            knService.removeUserById(Integer.parseInt(id));
+            userService.removeUserById(Integer.parseInt(id));
         }
         mv.setViewName("redirect:/user/selectUser");
         return mv;
     }
     /*处理修改用户请求*/
-    @RequestMapping(value = "user/updateUser")
+    @RequestMapping(value = "/user/updateUser")
     public ModelAndView updateUser(String flag,@ModelAttribute User user,ModelAndView mv)
     {System.out.println(" updateUser");
         if(flag.equals("1"))
         {//点击修改时的请求处理
-            User target=knService.findUserById(user.getId());
+            User target=userService.findUserById(user.getId());
             System.out.println("要更改的User对象："+target);
             mv.addObject("user",target);
             mv.setViewName("user/showUpdateUser");
         }else
         {//修改后的请求处理
             System.out.println("修改后的User对象："+user);
-            knService.modifyUser(user);
+            userService.modifyUser(user);
             mv.setViewName("redirect:/user/selectUser");
         }
         return mv;
@@ -104,7 +104,7 @@ public class UserController
             mv.setViewName("user/showAddUser");
         else
         {
-            knService.addUser(user);
+            userService.addUser(user);
             mv.setViewName("redirect:/user/selectUser");
         }
         return mv;

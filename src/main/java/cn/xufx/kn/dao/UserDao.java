@@ -18,7 +18,7 @@ public interface UserDao
     @Select("select * from " + USERTABLE + " WHERE id=#{id}")
     User selectById(Integer id);
 
-    @Delete("delete from " + USERTABLE + " where id=#{id}")
+    @Delete("delete from " + USERTABLE + " WHERE id=#{id}")
     void deleteById(Integer id);
 
     @UpdateProvider(type = UserDynaSqlProvider.class,method ="updateUser" )

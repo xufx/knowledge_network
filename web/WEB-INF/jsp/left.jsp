@@ -51,7 +51,8 @@
 		  <tr><td id="navbg1" class="left_nav_closed" ><div class="font1">知识点管理</div></td></tr>
 		  <tr valign="top" id="submenu1" style="display: none">
 		    <td class="left_nav_bgshw" height="50">
-			  <p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kp/selectKP" target="main">知识点查询</a></img></p>
+				<p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kpr/selectAllKPR" target="main">知识点关系查询</a></img></p>
+			  <p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kp/selectKP" target="main">知识点信息查询</a></img></p>
 			  <p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kp/addKP?flag=1" target="main">添加知识点</a></img></p>
 			</td>
 		  </tr>
@@ -84,7 +85,7 @@
 		  </tr>
 		  <tr><td height="2"></td></tr>
 		  
-		  <tr><td id="navbg5" class="left_nav_closed" onClick="showsubmenu(5)"><div class="font1">文档管理</div></td></tr>
+		  <tr><td id="navbg5" class="left_nav_closed" onClick="showsubmenu(5)"><div class="font1">学习文档管理</div></td></tr>
 		  <tr valign="top" id="submenu5" style="display: none">
 		    <td class="left_nav_bgshw tdbtmline" height="50">
 		    	<p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${ctx }/document/selectDocument" target="main">文档查询</a></img></p>
@@ -92,7 +93,23 @@
 			</td>
 		  </tr>
 		  <tr><td height="2"></td></tr>
-		 
+
+			<tr><td id="navbg6" class="left_nav_closed" onClick="showsubmenu(5)"><div class="font1">学习视频管理</div></td></tr>
+			<tr valign="top" id="submenu6" style="display: none">
+				<td class="left_nav_bgshw tdbtmline" height="50">
+					<p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${ctx }/video/selectVideo" target="main">视频查询</a></img></p>
+					<p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${ctx }/video/addVideo?flag=1" target="main">上传视频</a></img></p>
+				</td>
+			</tr>
+			<tr><td height="2"></td></tr>
+			<tr><td id="navbg7" class="left_nav_closed" onClick="showsubmenu(5)"><div class="font1">单位管理</div></td></tr>
+			<tr valign="top" id="submenu7" style="display: none">
+				<td class="left_nav_bgshw tdbtmline" height="50">
+					<p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${ctx }/unit/selectUnit" target="main">单位查询</a></img></p>
+					<p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="${ctx }/unit/addUnit?flag=1" target="main">添加单位</a></img></p>
+				</td>
+			</tr>
+			<tr><td height="2"></td></tr>
 		  <%--<tr valign="top"><td height="100%" align="center"><div class="copycct"><br /><strong>技术支持：</strong><br><strong>广东为学教育有限公司</strong><br>Http://www.fkjava.org</div></td></tr>
 		  <tr><td height="10"><img src="${ctx}/images/left_nav_bottom.gif" height="10"></img></td></tr>
 		  <tr><td height="10" bgcolor="#e5f0ff">&nbsp;</td></tr>--%>

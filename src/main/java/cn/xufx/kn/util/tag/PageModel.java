@@ -9,7 +9,7 @@ public class PageModel
     private int pageIndex;//当前页面，通过前端jsp页面获取
 
     //每页分多少条数据，由前端jsp页面指定
-    private int pageSize= KnConstants.PAGE_DEFAULT_SIZE=4;
+    private int pageSize= KnConstants.PAGE_DEFAULT_SIZE=10;
     private int totalSize;//总页数
     public int getRecordCount()
     {// 数据条数，

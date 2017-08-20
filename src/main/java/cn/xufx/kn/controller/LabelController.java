@@ -1,6 +1,6 @@
 package cn.xufx.kn.controller;
 import cn.xufx.kn.domain.Label;
-import cn.xufx.kn.service.KNService;
+import cn.xufx.kn.service.LabelService;
 import cn.xufx.kn.util.tag.PageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,8 +19,8 @@ import java.util.List;
 public class LabelController
 {
     @Autowired
-    @Qualifier("knService")
-    private KNService knService;
+    @Qualifier("labelService")
+    private LabelService labelService;
 
     @RequestMapping(value = "/label/selectLabel")
     public String selectLabel(
@@ -34,9 +34,9 @@ public class LabelController
         /*模糊查询时判断是否有关联对象传递，如果有，创建并封装关联对象*/
         PageModel pageModel=new PageModel();
         if (pageIndex!=null)
-            pageModel.setPageIndex(pageIndex);//显示第pageIndex也
+            pageModel.setPageIndex(pageIndex);//显示第pageIndex页
 
-        List<Label> labels=knService.findLabel(label,pageModel);
+        List<Label> labels=labelService.findLabel(label,pageModel);
 
         model.addAttribute("labels",labels);
         model.addAttribute("pageModel",pageModel);
@@ -60,7 +60,7 @@ public class LabelController
         else
         {
             System.out.println("LabelController 要添加的对象："+label);
-            knService.addLabel(label);//添加知识点
+            labelService.addLabel(label);//添加知识点
             mv.setViewName("redirect:/label/selectLabel");//重定向为查询请求
         }
         return mv;
@@ -75,7 +75,7 @@ public class LabelController
         String[] idArray=ids.split(",");
         for(String id:idArray)
         {
-            knService.removeLabelById(Integer.parseInt(id));
+            labelService.removeLabelById(Integer.parseInt(id));
         }
         mv.setView(new RedirectView("/label/selectLabel"));
         mv.setViewName("forward:/label/selectLabel");
@@ -94,14 +94,14 @@ public class LabelController
     {
         if (flag.equals("1"))
         {
-            Label target=knService.findLabelById(label.getId());
+            Label target=labelService.findLabelById(label.getId());
             System.out.println("修改之前的Label对象："+label);
             mv.addObject("label",target);
             mv.setViewName("label/showUpdateLabel");
         }else
         {
             System.out.println("修改之后的Label对象："+label);
-            knService.modifyLabel(label);
+            labelService.modifyLabel(label);
             mv.setViewName("redirect:/label/selectLabel");
         }
         return mv;

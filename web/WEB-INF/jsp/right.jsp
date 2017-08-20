@@ -31,7 +31,7 @@
 				    <tr><td class="font3 fftd">用户姓名：<font color="red" size="2">${sessionScope.user_session.username}</font></td></tr>
 					<tr><td class="main_tdbor"></td></tr>
 					
-					<tr><td class="font3 fftd">用户状态：<font color="red" size="2">
+					<%--<tr><td class="font3 fftd">用户状态：<font color="red" size="2">
 						<c:choose>
 							<c:when test="${sessionScope.user_session.status == 1}">
 								已审核
@@ -40,7 +40,7 @@
 								未审核
 							</c:otherwise>
 						</c:choose>
-					</font></td></tr>
+					</font></td></tr>--%>
 					<tr><td class="main_tdbor"></td></tr>
 					<tr>
 						<td class="font3 fftd">

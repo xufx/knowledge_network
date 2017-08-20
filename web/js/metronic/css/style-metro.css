@@ -54,7 +54,7 @@ select:focus {
 }
 .btn { 
 	padding:3px 14px; border-radius: 0px !important; border: 0px currentColor; color: rgb(51, 51, 51); 
-	font-family: "Î¢ÈíÑÅºÚ", Helvetica, Arial, sans-serif; font-size: 12px; filter:; cursor: pointer; box-shadow: none !important; text-shadow: none; background-image: none; background-color: rgb(229, 229, 229); -webkit-border-radius: 0; -moz-border-radius: 0; -webkit-box-shadow: none; -moz-box-shadow: none;
+	font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½", Helvetica, Arial, sans-serif; font-size: 12px; filter:; cursor: pointer; box-shadow: none !important; text-shadow: none; background-image: none; background-color: rgb(229, 229, 229); -webkit-border-radius: 0; -moz-border-radius: 0; -webkit-box-shadow: none; -moz-box-shadow: none;
 }
 .btn:hover {
 	color: rgb(51, 51, 51); background-color: rgb(216, 216, 216) !important;
@@ -294,7 +294,7 @@ a.btn-block.big.btn {
 	margin-right: 0px !important;
 }
 .dropdown-menu {
-	list-style: none; margin: 0px; padding: 0px; border: 1px solid rgb(221, 221, 221); left: 0px; top: 100%; font-family: "Î¢ÈíÑÅºÚ",Helvetica, Arial, sans-serif; font-size: 14px; float: left; display: none; position: absolute; z-index: 1000; box-shadow: 0px 1px 8px rgba(0,0,0,0.1); text-shadow: none; -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+	list-style: none; margin: 0px; padding: 0px; border: 1px solid rgb(221, 221, 221); left: 0px; top: 100%; font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½",Helvetica, Arial, sans-serif; font-size: 14px; float: left; display: none; position: absolute; z-index: 1000; box-shadow: 0px 1px 8px rgba(0,0,0,0.1); text-shadow: none; -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
 }
 .dropdown:hover .caret {
 	opacity: 1;
@@ -336,16 +336,16 @@ textarea.m-wrap {
 	line-height: 20px; font-size: 14px; font-weight: normal;
 }
 input.m-wrap {
-	font-family: "Î¢ÈíÑÅºÚ", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 button.m-wrap {
-	font-family: "Î¢ÈíÑÅºÚ", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 select.m-wrap {
-	font-family: "Î¢ÈíÑÅºÚ", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 textarea.m-wrap {
-	font-family: "Î¢ÈíÑÅºÚ", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 label.m-wrap {
 	margin-bottom: 5px; display: block;

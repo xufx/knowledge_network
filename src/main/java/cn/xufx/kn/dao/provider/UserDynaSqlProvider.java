@@ -36,7 +36,7 @@ public class UserDynaSqlProvider
         /*if (params.get("pageModel")!=null)
         {
             sql+=" limit#{pageModel.firstLimitParam},#{pageModel.pageSize}";
-            System.out.println("KNServiceImpl page sql:"+sql);
+            System.out.println("KPServiceImpl page sql:"+sql);
         }*/
         return sql;
     }

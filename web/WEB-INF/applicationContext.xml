@@ -5,7 +5,8 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:bean="http://www.springframework.org/schema/c"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:bean="http://www.springframework.org/schema/c"
 
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans
@@ -34,8 +35,7 @@
    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
-
-</beans>
+    </beans>
 <!--
     将rg.fkit.kn.dao下的所有接口当做spring的bean配置，之后可以进行依赖注入
     <mybatis:scan base-package="cn.xufx.kn.dao"/>

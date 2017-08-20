@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-359.5" y="106.5">cn.xufx.kn.service.KPRService</node>
+    <node x="-400.0" y="-224.0">cn.xufx.kn.dao.KPRDao</node>
+    <node x="95.5" y="-198.0">cn.xufx.kn.controller.KPRController</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="54.0" y="280.5" />
+  <SelectedNodes>
+    <node>cn.xufx.kn.dao.KPRDao</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

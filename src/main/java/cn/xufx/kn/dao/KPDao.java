@@ -2,6 +2,7 @@ package cn.xufx.kn.dao;
 import cn.xufx.kn.dao.provider.KPDynaSqlProvider;
 import cn.xufx.kn.domain.KnowledgePoint;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 import java.util.Map;
@@ -28,14 +29,22 @@ public interface KPDao
             @Result(property = "examFrequency",column = "exam_frequency"),
             @Result(property = "reference",column = "reference"),
             @Result(property = "doc",column = "doc"),
-            @Result(property = "video",column = "video")
-            /*@Result(property = "labels",column = "id",many = @Many
+            @Result(property = "video",column = "video"),
+            /*@Result(property = "prekps",column = "id",many = @Many
                     (
-                            select = "",
-                            fetchType = FetchType.EAGER
+                            select =
                     ))*/
+            @Result(property = "labels",column = "id",many = @Many
+                    (
+                            select = "cn.xufx.kn.dao.LabelDao.selectById",
+                            fetchType = FetchType.EAGER
+                    ))
         })
-    List<KnowledgePoint> selectByPage(Map<String, Object> params);
+    List<KnowledgePoint> selectByPage(Map<String,Object> params);
+
+    /*直接查询所有知识点，不分页*/
+    @Select("select * from "+KPTABLE)
+    List<KnowledgePoint>findAll();
 
     /*删除知识点*/
     @Delete("delete from " + KPTABLE + " where id=#{id}")
@@ -65,4 +74,9 @@ public interface KPDao
     /*根据参数查询总数*/
     @SelectProvider(type = KPDynaSqlProvider.class, method = "count")
     Integer count(Map<String, Object> params);
+
+    /*根据知识点的名称查询知识点*/
+    @Select("select * from "+KPTABLE+" where name=#{name}")
+    KnowledgePoint selectByName(String name);
+
 }

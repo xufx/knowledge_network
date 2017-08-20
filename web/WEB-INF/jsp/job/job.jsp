@@ -69,8 +69,8 @@
 			  <td>详细信息</td>
 			  <td align="center">操作</td>
 			</tr>
-			<c:forEach items="${requestScope.jobs}" var="job" varStatus="stat">
-				<tr id="data_${stat.index}" align="center" class="main_trbg" onMouseOver="move(this);" onMouseOut="out(this);">
+			<c:forEach items="${requestScope.kps_allRelateKPS}" var="job" varStatus="stat">
+				<tr id="data_${stat.index}" align="center" class="main_trbg" >
 					<td><input type="checkbox" id="box_${stat.index}" value="${job.id}"></td>
 					 <td>${job.name }</td>
 					  <td>${job.remark }</td>

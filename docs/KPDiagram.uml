@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-200.0" y="-208.0">cn.xufx.kn.controller.KPController</node>
+    <node x="-204.0" y="3.0">cn.xufx.kn.service.KNService</node>
+    <node x="-201.0" y="-441.0">cn.xufx.kn.dao.KPDao</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="345.0" y="-152.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

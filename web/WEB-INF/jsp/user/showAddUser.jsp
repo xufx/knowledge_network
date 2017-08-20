@@ -41,8 +41,7 @@
 		    <tr><td class="font3 fftd">
 		    	<table>
 		    		<tr>
-		    			<td class="font3 fftd">姓&nbsp;名：<input type="text" name="username" id="username" size="20"/></td>
-		    			<td class="font3 fftd">状&nbsp;态：<input type="text" name="status" id="status" size="20"/></td>
+		    			<td class="font3 fftd">用户名：<input type="text" name="username" id="username" size="20"/></td>
 		    		</tr>
 		    			
 		    		<tr>
@@ -67,7 +66,6 @@
 		/** 实验仪器表单提交 */
 		$("#userForm").submit(function(){
 			var username = $("#username");
-			var status = $("#status");
 			var loginname = $("#loginname");
 			var password = $("#password");
 			var msg = "";
@@ -75,9 +73,6 @@
 			if ($.trim(username.val()) == ""){
 				msg = "姓名不能为空！";
 				username.focus();
-			}else if ($.trim(status.val()) == ""){
-				msg = "状态不能为空！";
-				status.focus();
 			}else if ($.trim(loginname.val()) == ""){
 				msg = "登录名不能为空！";
 				loginname.focus();
