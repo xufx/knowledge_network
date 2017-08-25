@@ -21,10 +21,4 @@ public interface KPService
     void modifyKnowledgePoint(KnowledgePoint kp);/*修改知识点*/
     KnowledgePoint selectKPByName(String name);/*根据知识点的名称查询知识点*/
 
-    /*知识点的前续知识点增删改查*/
-    List<KnowledgePoint>findPreKP(KnowledgePoint kp,PageModel pageModel);
-    List<KnowledgePoint>findPreKP(List<Integer>ids,PageModel pageModel);
-    /*移除一个知识点的所有前续知识点*/
-    void  removePreKPById(List<Integer> ids);
-
 }

@@ -15,13 +15,22 @@
 	<link href="${ctx}/css/css.css" type="text/css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="${ctx}/js/ligerUI/skins/Aqua/css/ligerui-dialog.css"/>
 	<link href="${ctx}/js/ligerUI/skins/ligerui-icons.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="${ctx }/js/jquery-1.11.0.js"></script>
+	<%--<script type="text/javascript" src="${ctx }/js/jquery-1.11.0.js"></script>--%>
+	<script
+			src="https://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous">
+	</script>
 	<script type="text/javascript" src="${ctx }/js/jquery-migrate-1.2.1.js"></script>
 	<script src="${ctx}/js/ligerUI/js/core/base.js" type="text/javascript"></script>
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerDrag.js" type="text/javascript"></script>
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerDialog.js" type="text/javascript"></script>
 	<script src="${ctx}/js/ligerUI/js/plugins/ligerResizable.js" type="text/javascript"></script>
-	<link href="${ctx}/css/pager.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="${ctx}/js/echarts.js" charset="UTF-8" language="JavaScript"></script>
+
+	<script type="text/javascript" src="${ctx}/js/myecharts-kp.js" language="JavaScript"></script>
+
+ 	<link href="${ctx}/css/pager.css" type="text/css" rel="stylesheet" />
 	<style type="text/css">
 		.kpid
 		{
@@ -135,7 +144,9 @@
 <div class="btn_manage">
 	<a href="${ctx}/kpr/showAddKPR" id="addRelation">添加知识点关系</a><%--请求直接跳转--%>
 </div>
-<div style="height:10px;"></div>
+<div style="height:600px; width:400px;">
+	<div id="affix" style="width: 600px;height:600px; float:left;"></div>
+</div>
 <script type="text/javascript">
 	$(function()
 	{
@@ -229,16 +240,57 @@
     })
 
 </script>
-<script type="application/javascript">
-	$(Document).ready(function ()
+
+<!--知识网络可视化-->
+<script type="text/javascript">
+	$(function()
 	{
-        $(".btn_delete").each(function () {
-            alert("进入删除知识点");
-            $(this).click(function () {
-                alert("进入点击事件");
-            })
-        })
+		var kp_id=$("#kp_id").val();
+		var echarts_affix = echarts.init(document.getElementById('affix'));
+		//echarts_affix.showLoading();
+		$.post(
+				/*发送请求，然后进入请求处理后的页面*/
+				'${pageContext.request.contextPath}/echarts/knowledge-point?level=6&spread=true&id=' + kp_id,
+				function (response)
+				{//发送请求成功后获取后台返回的json数据response
+                    //getResponse(response);
+					//echarts_affix.hideLoading();
+					kp_echarts(echarts_affix, response);
+				});
 	})
+    function  getResponse(response)
+    {
+        alert(typeof(response));
+		/*将json字符串转化为json对象*/
+        var obj=eval('('+response+')');
+        console.log(obj);
+        alert(typeof(obj));
+        for(var str in obj)
+        {
+			if (str=="edges")
+			{
+				for(var edge in obj[str])
+				{/*o:数组中的每个对象*/
+					var o=obj[str][edge];
+					console.log(o);
+					console.log(o.source);
+				}
+			}else if(str=="name")
+			{
+				console.log(str+":"+obj[str]);
+			}else if (str=="nodes")
+			{
+				for(var node in obj[str])
+				{/*o:数组中的每个对象*/
+					var o=obj[str][node];
+					console.log(o);
+					console.log(o.name);
+				}
+			}
+        }
+    }
+
 </script>
+
 </body>
 </html>

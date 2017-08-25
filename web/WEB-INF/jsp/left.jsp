@@ -51,8 +51,7 @@
 		  <tr><td id="navbg1" class="left_nav_closed" ><div class="font1">知识点管理</div></td></tr>
 		  <tr valign="top" id="submenu1" style="display: none">
 		    <td class="left_nav_bgshw" height="50">
-				<p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kpr/selectAllKPR" target="main">知识点关系查询</a></img></p>
-			  <p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kp/selectKP" target="main">知识点信息查询</a></img></p>
+			  <p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kp/selectKP" target="main">知识点查询</a></img></p>
 			  <p class="left_nav_link"><img src="${ctx}/images/left_nav_arrow.gif">&nbsp;&nbsp;<a href="kp/addKP?flag=1" target="main">添加知识点</a></img></p>
 			</td>
 		  </tr>

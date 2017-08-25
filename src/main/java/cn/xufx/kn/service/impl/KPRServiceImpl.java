@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 /**
- * Created by xiao on 2017/2/26/0026.
  */
 @Service("kprService")
 public class KPRServiceImpl implements KPRService

@@ -52,5 +52,12 @@ public interface KPRService
     /*删除相关知识点*/
     void deleteRelateKPS(Integer kp_id,String ids);
 
+    /*查询前续知识点编号*/
+    List<Integer> selectPreIds(Integer id);
+    /*查询后续知识点编号*/
+    List<Integer> selectNextIds(Integer id);
+    /*查询相关知识点编号*/
+    List<Integer> selectRelateIds(Integer id);
+
 
 }

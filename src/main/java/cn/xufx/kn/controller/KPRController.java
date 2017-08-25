@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 /**
- * Created by xiao on 2017/2/27.
  */
 @Controller
 public class KPRController
@@ -69,7 +68,7 @@ public class KPRController
         mv.setViewName("redirect:/kp/selectKP");
         return mv;
     }
-
+/*
     @RequestMapping(value = "/kpr/selectAllKPR")
     String selectAllKPR(Model model)
     {
@@ -85,13 +84,13 @@ public class KPRController
             allRelateKPS.add(pre_kps);
             allRelateKPS.add(next_kps);
             allRelateKPS.add(relate_kps);
-            /*知识点及其关联知识点*/
+            *//*知识点及其关联知识点*//*
             kps_allRelateKPS.put(kp,allRelateKPS);
         }
 
         model.addAttribute("kps_allRelateKPS",kps_allRelateKPS);
         return "kpr/allKPR";
-    }
+    }*/
 
     /*删除前续知识点
     * kpID:知识点

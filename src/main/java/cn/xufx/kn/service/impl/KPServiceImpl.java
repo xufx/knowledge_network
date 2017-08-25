@@ -69,20 +69,4 @@ public class KPServiceImpl implements KPService
         return kp;
     }
 
-
-    @Override
-    public List<KnowledgePoint> findPreKP(KnowledgePoint kp,PageModel pageModel)
-    {
-        return null;
-    }
-    @Override
-    public List<KnowledgePoint> findPreKP(List<Integer> ids,PageModel pageModel)
-    {
-        return null;
-    }
-    @Override
-    public void removePreKPById(List<Integer> ids)
-    {
-        /*删除知识点的前续知识点*/
-    }
 }

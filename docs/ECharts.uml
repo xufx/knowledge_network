@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>cn.xufx.kn.controller.EChartsController</OriginalElement>
+  <nodes>
+    <node x="0.0" y="622.0">cn.xufx.kn.controller.EChartsController</node>
+    <node x="104.50000000000006" y="157.0">cn.xufx.kn.util.echarts.EChartsBuilder</node>
+    <node x="524.2141732283467" y="191.39055118110238">cn.xufx.kn.util.echarts.Node</node>
+    <node x="-244.2362204724409" y="207.10236220472441">cn.xufx.kn.util.echarts.Edge</node>
+    <node x="18.500000000000057" y="415.0">cn.xufx.kn.util.echarts.EChartsService</node>
+    <node x="156.5000000000001" y="0.0">cn.xufx.kn.util.echarts.EChartsProduct</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="cn.xufx.kn.util.echarts.EChartsBuilder" target="cn.xufx.kn.util.echarts.Node">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.util.echarts.EChartsBuilder" target="cn.xufx.kn.util.echarts.Edge">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.controller.EChartsController" target="cn.xufx.kn.util.echarts.EChartsService">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.util.echarts.EChartsProduct" target="cn.xufx.kn.util.echarts.Node">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.util.echarts.EChartsProduct" target="cn.xufx.kn.util.echarts.Edge">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.util.echarts.EChartsService" target="cn.xufx.kn.util.echarts.Edge">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.util.echarts.EChartsService" target="cn.xufx.kn.util.echarts.Node">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.util.echarts.EChartsBuilder" target="cn.xufx.kn.util.echarts.EChartsProduct">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="cn.xufx.kn.util.echarts.EChartsService" target="cn.xufx.kn.util.echarts.EChartsBuilder">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8001102535832414" x="260.24280005511923" y="382.82031142345323" />
+  <SelectedNodes>
+    <node>cn.xufx.kn.util.echarts.Node</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

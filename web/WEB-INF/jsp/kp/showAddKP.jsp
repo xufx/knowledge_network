@@ -44,7 +44,6 @@
 					<tr>
 						<td class="font3">
 							知识点名称：<input type="text" name="name" id="name">
-							<input type="button" id="kpInput" value="查看知识点是否已经存在"/>
 						</td>
 						<td id="resultShow"><% request.getAttribute("kp");%></td>
 					</tr>
@@ -104,24 +103,29 @@
 <div style="height:10px;"></div>
 <script type="text/javascript">
 	$(function(){
-		/*搜索知识点*/
-		$("#kpInput").click(function () {
-			alert("开始搜索知识点");
+		/*验证知识点是否已经存在*/
+		$("#name").change(function () {
 			var kpName=$("#name").val();
-			alert("kpName="+kpName);
 			if (kpName!=null && kpName!="")
-			{
+			{			alert("kpName:"+kpName);
 				var url="${ctx}/kp/selectKPByName?name="+kpName;
-                alert("url="+url);
-				$.ajax(url,function (data)
+				alert("url="+url);
+				$.post(url,function (data)
 				{
-                    alert(data);
+					alert(data);
+					if (data=="false")
+					{
+						alert("知识点不存在，可以添加");
+					}else
+					{
+						alert("知识点已经存在，请重新输入知识点");
+					}
 				});
 			}else
 			{
 				alert("请输入知识点名称");
 			}
-        });
+		})
 		/** 知识点表单提交 */
 		$("#kpForm").submit(function(){
 			var name = $("#name");

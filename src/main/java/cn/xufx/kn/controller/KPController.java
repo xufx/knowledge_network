@@ -122,11 +122,17 @@ public class KPController
     }
 
 
-    @RequestMapping(value = "/kp/selectKPByName",method = RequestMethod.GET)
-    public String selectKPByName(String name,ModelAndView mv)
+    /*知识点添加界面的知识点查询*/
+    @RequestMapping(value = "/kp/selectKPByName",method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean selectKPByName(String name)
     {
         KnowledgePoint kp= KPService.selectKPByName(name);
-        mv.addObject("kp",new String("存在"));
-        return "/kp/showAddKP";
+        Boolean flag=false;
+        if (kp!=null)
+        {
+            flag=true;
+        }
+        return flag;
     }
 }
