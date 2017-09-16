@@ -35,11 +35,9 @@ public class EChartsService {
         node.setValue(kp);
         builder.add(node);//将节点添加到节点集之中
 
+        searchRelate(builder, kp_id);
         /*查询知识点的前后续知识点*/
         searchPreAndNext(builder, kp_id, level);
-        /*查询知识点的父子知识点*/
-        //searchSubordination(builder, kp_id);
-        searchRelate(builder, kp_id);
         /*查询完知识点的关系后，将边加入边集之中*/
         return builder.build();//返回EchartsProduct对象，重新编排节点和边
     }
@@ -90,6 +88,7 @@ public class EChartsService {
                 searchPre(builder, id, level - 1, type);
                 /*边的类型，源、目标*/
                 Edge edge = new Edge(Edge.AFFIX_TYPE, id, kp_id);
+                if (builder.containsEdge(edge))return;
                 builder.add(edge);
             }
 
@@ -99,13 +98,15 @@ public class EChartsService {
                 for (Integer id : postfix_ids) {
                     searchNext(builder, id, level - 1, Node.POSTFIX_TYPE);
                     Edge edge = new Edge(Edge.AFFIX_TYPE, kp_id, id);
+                    if (builder.containsEdge(edge))return;
                     builder.add(edge);
                 }
             }
         }
     }
 
-    private void searchNext(EChartsBuilder builder, Integer kp_id, int level, String type) {
+    private void searchNext(EChartsBuilder builder, Integer kp_id, int level, String type)
+    {
        if (builder.contains(kp_id)) return;
 
         /*根据id查询知识点的记录*/
@@ -124,6 +125,7 @@ public class EChartsService {
                 /*将id节点添加到Node中*/
                 searchNext(builder, id, level - 1, type);
                 Edge edge = new Edge(Edge.AFFIX_TYPE, kp_id, id);
+                if (builder.containsEdge(edge))return;
                 builder.add(edge);
             }
 
@@ -133,6 +135,7 @@ public class EChartsService {
                 for (Integer id : prefix_ids) {
                     searchPre(builder, id, level - 1, Node.PREFIX_TYPE);
                     Edge edge = new Edge(Edge.AFFIX_TYPE, id, kp_id);
+                    if (builder.containsEdge(edge))return;
                     builder.add(edge);
                 }
             }
@@ -143,9 +146,16 @@ public class EChartsService {
         Node node = null;
         Edge edge = null;
         List<Integer> relate_ids=kprService.selectRelateIds(kp_id);
+
         for(Integer relate_id:relate_ids)
         {
+            KnowledgePoint kp=kpService.findKnowledgePointById(relate_id);
+            node=new Node(kp.getName(),Node.RELATE_type);
+            node.setValue(kp);
+            builder.add(node);
+
             edge = new Edge(Edge.RELATE_TYPE, relate_id, kp_id);
+            if (builder.containsEdge(edge))return;
             builder.add(edge);
         }
 

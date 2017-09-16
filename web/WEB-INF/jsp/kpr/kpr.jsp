@@ -250,17 +250,17 @@
 		//echarts_affix.showLoading();
 		$.post(
 				/*发送请求，然后进入请求处理后的页面*/
-				'${pageContext.request.contextPath}/echarts/knowledge-point?level=6&spread=true&id=' + kp_id,
+				'${pageContext.request.contextPath}/echarts/knowledge-point?level=3&spread=true&id=' + kp_id,
 				function (response)
 				{//发送请求成功后获取后台返回的json数据response
-                    //getResponse(response);
+                    getResponse(response);
 					//echarts_affix.hideLoading();
 					kp_echarts(echarts_affix, response);
 				});
 	})
     function  getResponse(response)
     {
-        alert(typeof(response));
+        //alert(typeof(response));
 		/*将json字符串转化为json对象*/
         var obj=eval('('+response+')');
         console.log(obj);
@@ -273,7 +273,7 @@
 				{/*o:数组中的每个对象*/
 					var o=obj[str][edge];
 					console.log(o);
-					console.log(o.source);
+					//console.log(o.source);
 				}
 			}else if(str=="name")
 			{
@@ -284,7 +284,7 @@
 				{/*o:数组中的每个对象*/
 					var o=obj[str][node];
 					console.log(o);
-					console.log(o.name);
+					//console.log(o.name);
 				}
 			}
         }

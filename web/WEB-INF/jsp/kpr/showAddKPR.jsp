@@ -62,7 +62,7 @@
 		/*点击查询知识点之间的关系是否存在*/
 			$("#btn_search").click(function ()
 			{
-				alert("进入jquery函数");
+				//alert("进入jquery函数");
 				var firstID=$("#firstKP").val();
 				var relation=$("#relation").val();
 				var secondID=$("#secondKP").val();
@@ -71,17 +71,13 @@
 				if(firstID!=secondID)
 				{
 					$.get(url,function (data)
-					{alert(data);
+					{
 						if(data[0]==true||data[1]==true||data[2]==true)
 						{
 							alert("此种关系已经存在，请重新选择知识点");
-							/*if (data[3]==true)
-							{
-								alert("一个知识点不能既是前续知识点又是后续知识点")
-							}*/
 						}else
 						{
-							alert("此种关系不存在，可以添加");
+							//alert("此种关系不存在，可以添加");
 							addRelation(firstID,relation,secondID);
 						}
 					});
@@ -94,7 +90,7 @@
 	});
 	function addRelation(firstID,relation,secondID)
 	{
-			alert("进入addRelation函数");
+			//alert("进入addRelation函数");
 			var url="${ctx}/kpr/addRelations?firstID="+firstID+"&relation="+relation+"&secondID="+secondID;
 		window.location.href=url;
 	}

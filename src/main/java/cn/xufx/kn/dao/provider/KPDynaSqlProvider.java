@@ -67,7 +67,7 @@ public class KPDynaSqlProvider
             int i=p.getFirstLimitParam();
             if (i<0)
             {
-                sql+=" limit 0,#{pageModel.pageSize}";
+                sql+=" limit 1,#{pageModel.pageSize}";
             }
             else
             {

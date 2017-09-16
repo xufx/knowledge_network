@@ -32,6 +32,7 @@ public class PagerTag extends SimpleTagSupport {
 		StringBuilder res = new StringBuilder();
 		/** 定义它拼接中间的页码 */
 		StringBuilder str = new StringBuilder();
+
 		/** 判断总记录条数 */
 		if (recordCount > 0){   //1499 / 15  = 100
 			/** 需要显示分页标签，计算出总页数 需要分多少页 */
@@ -120,7 +121,8 @@ public class PagerTag extends SimpleTagSupport {
 					str.append("<a href='"+ tempUrl +"'>"+ i +"</a>");
 				}
 			}
-		}else{
+		}
+		else{
 			/** 靠近首页 */
 			if (this.pageIndex <= 8){
 				for (int i = 1; i <= 10; i++){

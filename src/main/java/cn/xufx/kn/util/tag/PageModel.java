@@ -52,7 +52,7 @@ public class PageModel
         this.totalSize = totalSize;
     }
     public  int getFirstLimitParam()
-    {
+    {/*设置显示的开始记录*/
         return (this.getPageIndex()-1)*this.getPageSize();
     }
     @Override

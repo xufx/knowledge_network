@@ -2,7 +2,6 @@ package cn.xufx.kn.util.echarts;
 /*边类，包括边的类型、源，目标*/
 class Edge
 {
-
     /*边的类型*/
     public static final String SUBORDINATION_TYPE = "subordination";
     public static final String AFFIX_TYPE = "affix";

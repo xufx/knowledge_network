@@ -37,10 +37,19 @@ public class EChartsBuilder {
         edges.add(edge);
     }
 
+    /*判断nodes_ids是否包含id的节点*/
     public boolean contains(Integer id) {
         return node_ids.contains(id);
     }
 
+    public boolean containsEdge(Edge edge)
+    {/*如果两个边的source和target都相同就不添加此条边*/
+        Integer s=edge.getSource();
+        Integer t=edge.getTarget();
+        String type=edge.getType();
+        if (s==t) return false;
+        return true;
+    }
 
     public EChartsProduct build()
     {
@@ -49,7 +58,11 @@ public class EChartsBuilder {
          */
         List<Node> nodes = new ArrayList<Node>(this.nodes);
         List<Edge> edges = new ArrayList<Edge>(this.edges);
-
+        System.out.println("sort之前");
+        for (Node node:nodes)
+        {
+            System.out.print(node.getValue().getId()+",");
+        }
         nodes.sort(new Comparator<Node>()
         {
             @Override
@@ -59,7 +72,11 @@ public class EChartsBuilder {
                 return id1 - id2;
             }
         });
-
+        System.out.println("sort之后");
+        for (Node node:nodes)
+        {
+            System.out.print(node.getValue().getId()+",");
+        }
         /*indexs:按顺序从小到大存储知识点的id，1,2,3,4.。。*/
         Map<Integer, Integer> indexs = new HashMap<Integer, Integer>();
         for (Node node : nodes)

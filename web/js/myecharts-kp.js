@@ -26,12 +26,6 @@ var itemStyle_relate = {
     emphasis: {}
 };
 
-var itemStyle_kid = {
-    normal: {
-        color: '#d4e54a'
-    },
-    emphasis: {}
-};
 
 var edge_label_affix = {
     normal: {
@@ -39,14 +33,14 @@ var edge_label_affix = {
         textStyle: {
             fontWeight: 'bold'
         },
-        formatter: '前后'
+        formatter: ''
     },
     emphasis: {
         show: true,
         textStyle: {
             fontWeight: 'bolder'
         },
-        formatter: '前后'
+        formatter: ''
     }
 };
 
@@ -56,24 +50,25 @@ var edge_label_subordination = {
         textStyle: {
             fontWeight: 'bold'
         },
-        formatter: '相关'
+        formatter: ''
     },
     emphasis: {
         show: true,
         textStyle: {
             fontWeight: 'bolder'
         },
-        formatter: '相关'
+        formatter: ''
     }
 };
 
 var tooltip_global = {
     trigger: 'item',
     triggerOn: 'click',
-    enterable: true,
-    position: 'right',
+    enterable: true,//鼠标是否可进入提示框浮层中
+    position: 'right',//提示框浮层的位置，默认不设置时位置会跟随鼠标的位置。
     hideDelay: 50,
-    formatter: function (params, ticket, callback) {
+    formatter: function (params, ticket, callback) //提示框浮层内容
+    {
         var contextPath = "";
         var content = '<div>'
             + 'name:&nbsp;' + params.data.name + '<br/>';
@@ -101,12 +96,13 @@ var lineStyle_affix = {
     },
 };
 
-
+/*知识点的边用虚线表示*/
 var lineStyle_subordination = {
     normal: {
-        opacity: 0.6,
+        /*opacity: 0.6,*/
         width: 3,
-        type: 'dashed'
+        type: 'solid',
+        color:'yellow'
     }
 };
 
@@ -148,9 +144,11 @@ function edge_forEach(edge) {
     }
 };
 
+/*mychart:jsp中的元素
+* subnet：Controller返回的json数据*/
 function kp_echarts(myChart, subnet)
 {
-    alert("进入kp_echarts");
+    //alert("进入kp_echarts");
     var name="";
     var nodes=[];
     var edges=[];
@@ -159,7 +157,6 @@ function kp_echarts(myChart, subnet)
     }
     /*将json字符串subnet转化为json对象*/
     var obj=eval('('+subnet+')');
-    console.log(obj);
     for(var str in obj)
     {
         if (str=="edges")
@@ -201,17 +198,17 @@ function kp_echarts(myChart, subnet)
             draggable: true,
             focusNodeAdjacency: true,
 
-            symbol: 'circle',
+            symbol: 'circle',//关系图节点标记的图形
             symbolSize: 50,
             itemStyle: {
-                normal: {},
-                emphasis: {}
+                normal: {},//图形在默认状态下的样式
+                emphasis: {}//图形在高亮状态下的样式
             },
 
             edgeSymbol: ['circle', 'arrow'],
             edgeSymbolSize: [4, 10],
 
-            lineStyle: {
+            lineStyle: {//线条样式
                 normal: {
                     opacity: 0.6,
                     width: 3
@@ -234,9 +231,9 @@ function kp_echarts(myChart, subnet)
             },
 
             force: {
-                edgeLength: [50, 120],
-                repulsion: 120,
-                gravity: 0,
+                edgeLength: [50, 120],//边的两个节点之间的距离
+                repulsion: 120,//节点之间的斥力因子。
+                gravity: 0,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
                 layoutAnimation: true
             },
 
